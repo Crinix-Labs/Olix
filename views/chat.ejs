@@ -1,0 +1,19 @@
+<h1>Chat with <%= model %></h1>
+
+<div class="chat-container">
+  <% history.forEach(msg => { %>
+    <div class="message <%= msg.role %>">
+      <strong><%= msg.role === 'user' ? 'You' : 'AI' %>:</strong>
+      <p><%= msg.content %></p>
+    </div>
+  <% }) %>
+</div>
+
+<form method="post">
+  <label>
+    Your Message
+    <textarea name="prompt" rows="3" required><%= prompt || '' %></textarea>
+  </label>
+  <button type="submit">Send</button>
+  <a href="/chat/<%= model %>" role="button">Clear History</a>
+</form>

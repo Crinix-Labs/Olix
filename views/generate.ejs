@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ollama Web Panel</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
+    />
+    <style>
+      .container {
+        padding: 2rem;
+      }
+      .model-list {
+        margin-top: 2rem;
+      }
+      .actions {
+        display: flex;
+        gap: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <%- include('nav') %>
+      <h1>Generate with <%= model %></h1>
+      <form method="post">
+        <label>
+          Prompt
+          <textarea name="prompt" rows="3" required></textarea>
+        </label>
+        <button type="submit">Generate</button>
+      </form>
+
+      <article>
+        <h3>Result:</h3>
+        <p></p>
+      </article>
+    </main>
+  </body>
+</html>

@@ -2,7 +2,7 @@
   "name": "olix",
   "version": "1.0.0",
   "description": "Olix Is A Web panel Where You Can Manage You Ai Models Of Ollama (Under Devlopment)",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,9 +11,13 @@
   "license": "ISC",
   "dependencies": {
     "@tailwindcss/cli": "^4.0.3",
+    "axios": "^1.7.9",
+    "body-parser": "^1.20.3",
     "chalk": "^5.4.1",
+    "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
+    "express-session": "^1.18.1",
     "tailwind": "^4.0.0",
     "tailwindcss": "^4.0.3"
   }
