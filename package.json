@@ -1,0 +1,17 @@
+{
+  "name": "olix",
+  "version": "1.0.0",
+  "description": "Olix Is A Web panel Where You Can Manage You Ai Models Of Ollama (Under Devlopment)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Crinix Team",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  }
+}
