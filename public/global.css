@@ -1,0 +1,36 @@
+/* Import */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+
+/* variables */
+
+:root {
+    --bg-color: #171717;
+    --primary-color: #303841;
+    --secondary-color: #4C5154;
+    --text-color: #EEEEEE;
+}
+/* Body Css */
+
+body {
+  font-family: "Inter", serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+
+/* The side navigation menu */
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: var(--primary-color);
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+  }
+  
