@@ -1,19 +1,47 @@
-<h1>Ollama Dashboard</h1>
+<%- include("partials/header.ejs") %>
 
-<div class="dashboard-stats">
-  <article>
-    <h3>Total Models</h3>
-    <p><%= stats.totalModels %></p>
-  </article>
-  <article>
-    <h3>Total Storage</h3>
-    <p><%= stats.totalSize %></p>
-  </article>
-  <article>
-    <h3>Active Models</h3>
-    <p><%= stats.activeModels %></p>
-  </article>
+
+
+<div class="max-w-7xl mx-auto">
+    <% if (!ollamaStatus) { %>
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-6">
+            ⚠️ Ollama Connection Error: Make sure Ollama is running at <code><%= process.env.OLLAMA_API %></code>
+        </div>
+    <% } %>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <!-- Stats Cards -->
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+            <h3 class="text-gray-500 text-sm font-medium">Total Models</h3>
+            <p class="mt-2 text-3xl font-bold text-blue-600"><%= stats.totalModels %></p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+            <h3 class="text-gray-500 text-sm font-medium">Total Storage</h3>
+            <p class="mt-2 text-3xl font-bold text-green-600"><%= stats.totalSize %></p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+            <h3 class="text-gray-500 text-sm font-medium">Active Models</h3>
+            <p class="mt-2 text-3xl font-bold text-purple-600"><%= stats.activeModels %></p>
+        </div>
+    </div>
+
+    <% if (ollamaStatus) { %>
+        <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h2 class="text-lg font-semibold text-gray-900">Model Management</h2>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <!-- Table content from previous version -->
+                </table>
+            </div>
+        </div>
+    <% } else { %>
+        <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+            <p class="text-gray-500">Connect to Ollama to manage models</p>
+        </div>
+    <% } %>
 </div>
 
-<h2>Model Management</h2>
-<!-- Keep existing model table from previous version -->
+</body>
+</html>

@@ -1,27 +1,48 @@
-<style>
-    /* Add these styles */
-    .dashboard-stats {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1rem;
-        margin: 2rem 0;
-    }
-    
-    .chat-container {
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        padding: 1rem;
-        margin-bottom: 1rem;
-        height: 60vh;
-        overflow-y: auto;
-    }
-    
-    .message {
-        margin: 0.5rem 0;
-        padding: 0.5rem;
-        border-radius: 5px;
-    }
-    
-    .user { background-color: #e3f2fd; }
-    .assistant { background-color: #f5f5f5; }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= appName %> | <%= title %></title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .sidebar { width: 260px; }
+        .content-area { margin-left: 260px; }
+        @media (max-width: 768px) {
+            .sidebar { width: 100%; position: static; }
+            .content-area { margin-left: 0; }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Sidebar -->
+    <aside class="sidebar bg-white shadow-lg fixed h-full">
+        <div class="p-4">
+            <h1 class="text-2xl font-bold text-blue-600 mb-6"><%= appName %></h1>
+            <nav class="space-y-2">
+                <a href="/" class="block p-2 hover:bg-gray-100 rounded <%= title === 'Dashboard' ? 'bg-blue-50' : '' %>">
+                    📊 Dashboard
+                </a>
+                <a href="/pull" class="block p-2 hover:bg-gray-100 rounded <%= title === 'Pull Model' ? 'bg-blue-50' : '' %>">
+                    ⬇️ Pull Model
+                </a>
+                <% if (ollamaStatus && models.length > 0) { %>
+                    <div class="pt-4 border-t mt-4">
+                        <p class="text-sm text-gray-500 px-2 mb-2">AI Models</p>
+                        <% models.forEach(model => { %>
+                            <a href="/chat/<%= model.name %>" class="block p-2 hover:bg-gray-100 rounded">
+                                🤖 <%= model.name %>
+                            </a>
+                        <% }) %>
+                    </div>
+                <% } %>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content-area p-8">
+        <%- body %>
+    </main>
+</body>
+</html>

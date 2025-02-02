@@ -1,19 +1,15 @@
-<h1>Chat with <%= model %></h1>
+<% import('layout', { title: 'AI Chat', appName, ollamaStatus, models }) -%>
+<%- include("partials/header.ejs") %>
 
-<div class="chat-container">
-  <% history.forEach(msg => { %>
-    <div class="message <%= msg.role %>">
-      <strong><%= msg.role === 'user' ? 'You' : 'AI' %>:</strong>
-      <p><%= msg.content %></p>
+
+<div class="max-w-4xl mx-auto">
+    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+        <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
+            <h2 class="text-lg font-semibold text-gray-900">Chat with <%= model %></h2>
+            <a href="/" class="text-blue-600 hover:text-blue-800">← Back to Dashboard</a>
+        </div>
+        
+        <!-- Chat content from previous version -->
     </div>
-  <% }) %>
 </div>
 
-<form method="post">
-  <label>
-    Your Message
-    <textarea name="prompt" rows="3" required><%= prompt || '' %></textarea>
-  </label>
-  <button type="submit">Send</button>
-  <a href="/chat/<%= model %>" role="button">Clear History</a>
-</form>
